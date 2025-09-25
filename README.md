@@ -12,29 +12,7 @@ A secure, AI-powered clinical documentation platform for healthcare teams. Docto
 
 ---
 
-## Tech Stack
-- **API:** FastAPI (Python)
-- **UI:** Streamlit (Python)
-- **Database:** PostgreSQL (structured data: patients, users, notes, audit logs)
-- **Message Queue:** Celery + Redis (background summarization, encryption)
-- **Key-Value Store:** Redis
-- **LLM/AI:** OpenAI GPT (via LangChain) or BioBERT/ClinicalBERT
-- **Encryption:** AES-256 (at rest), TLS (in transit), key management (Vault/KMS)
-- **Containers:** Docker (local/cloud deployment)
-- **(Optional) Storage:** S3/MinIO for file storage
-
----
-
-## Features
-- **Doctor & Nurse Notes:** Upload, summarize, and encrypt clinical notes.
-- **Nurse Assist Module:** Real-time documentation, risk flagging, and intervention suggestions using LLMs and RAG over historical data.
-- **Audit Trail:** Immutable, hash-chained logs for compliance.
-- **Role-based Summaries:** Patient-friendly and clinical summaries for different users.
-- **Evidence Integration:** Recommendations grounded in clinical guidelines and past data.
-
----
-
-## Architecture
+## Architecture Diagram
 ```
 [Doctor/Nurse UI]
      │
@@ -53,6 +31,102 @@ DB  MessageQ   VectorDB      Object Storage
      ▼
 [Audit Log, Risk Engine, Compliance]
 ```
+
+---
+
+## Final Tech Stack
+1. **API/Backend**
+   - FastAPI: REST API endpoints
+   - Celery + Redis: Background jobs (summarization, encryption, risk scan)
+   - PostgreSQL: Store patients, notes, summaries, audit logs
+   - SQLAlchemy + Alembic: ORM + migrations
+   - python-dotenv: Manage secrets
+2. **AI/LLM Layer**
+   - LangChain: Orchestrates summarizer + nurse-assist agent
+   - OpenAI GPT-4o / GPT-4-mini: Summarization + recommendations
+   - Embeddings: text-embedding-3-small (OpenAI) or Hugging Face
+   - Vector DB: FAISS or Postgres pgvector extension for historical notes
+3. **UI/Dashboard**
+   - Streamlit: Interactive web UI (no frontend coding)
+   - Tabs: Doctor Notes | Nurse Notes | Summaries | Risk Reports | Audit Trail
+   - Plotly/Altair (optional): Graphs for risk levels or timeline view
+4. **Infrastructure / Deployment**
+   - Docker + Docker Compose: Run Postgres, Redis, API, and UI containers
+   - Nginx: Optional reverse proxy if deployed
+   - GitHub Actions: CI for linting & tests
+   - GCP/AWS (optional): Deploy if time/credits allow
+5. **Security**
+   - AES (cryptography): Encrypt stored notes
+   - JWT/OAuth2: User auth + RBAC (Doctor, Nurse, Admin)
+   - Audit logging: Postgres table (hash chain optional)
+6. **Notebooks (Exploration)**
+   - eval_llm_prompts.ipynb: Test summarization prompts
+   - risk_agent_prototyping.ipynb: Retrieval + risk scoring
+   - nurse_demo_flow.ipynb: Simulate full nurse-assist flow
+
+---
+
+## Project Flow
+1. **Doctors upload notes** via the UI. Notes are encrypted and stored in Postgres.
+2. **Nurses enter real-time notes**; the system summarizes and links them to patient history.
+3. **Background jobs** (Celery) handle summarization, encryption, and risk scanning.
+4. **LLM/Agents** (LangChain + OpenAI) generate summaries, risk reports, and recommendations.
+5. **Audit logs** are created for every access and modification, ensuring compliance.
+6. **Dashboard** (Streamlit) displays notes, summaries, risk flags, and audit trails for doctors and nurses.
+
+---
+
+## Features
+- **Doctor & Nurse Notes:** Upload, summarize, and encrypt clinical notes.
+- **Nurse Assist Module:** Real-time documentation, risk flagging, and intervention suggestions using LLMs and RAG over historical data.
+- **Audit Trail:** Immutable, hash-chained logs for compliance.
+- **Role-based Summaries:** Patient-friendly and clinical summaries for different users.
+- **Evidence Integration:** Recommendations grounded in clinical guidelines and past data.
+
+---
+
+## Project Structure
+secure-med-notes-ai/
+├─ README.md
+├─ requirements.txt
+├─ .gitignore
+├─ .env.example
+├─ docker-compose.yml
+│
+├─ infra/
+│  ├─ Dockerfile.api
+│  ├─ Dockerfile.worker
+│  ├─ Dockerfile.ui
+│  └─ nginx.conf
+│
+├─ api/
+│  ├─ main.py
+│  ├─ deps.py
+│  ├─ routes/
+│  ├─ services/
+│  ├─ agents/
+│  ├─ models/
+│  ├─ db/
+│  ├─ tasks/
+│  └─ tests/
+│
+├─ ui/
+│  ├─ app.py
+│  ├─ components/
+│  └─ assets/
+│
+├─ data/
+│  ├─ sample_doctor_notes/
+│  ├─ sample_nurse_notes/
+│  └─ policies/hipaa.md
+│
+├─ documentation/
+│  └─ planner.md
+│
+└─ notebooks/
+   ├─ eval_llm_prompts.ipynb
+   ├─ risk_agent_prototyping.ipynb
+   └─ nurse_demo_flow.ipynb
 
 ---
 
