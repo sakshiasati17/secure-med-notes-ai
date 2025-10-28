@@ -39,7 +39,7 @@ pip install -r requirements.txt
 
 # Run database migrations and seed data
 echo "🗄️  Setting up database..."
-python api/seed_data.py
+python api/seed_more_data.py
 
 echo "✅ Setup complete!"
 echo ""

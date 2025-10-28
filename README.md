@@ -394,8 +394,7 @@ secure-med-notes-ai/
 │   ├── tasks/                    # Celery background tasks
 │   ├── deps.py                   # Dependencies (auth, db)
 │   ├── main.py                   # FastAPI application
-│   ├── seed_data.py              # Sample data generation
-│   └── seed_more_data.py         # Extended sample data
+│   └── seed_more_data.py         # Sample data generation (60+ diverse notes)
 │
 ├── ui/                           # Frontend UI
 │   ├── ai_dashboard.py           # AI analytics dashboard
