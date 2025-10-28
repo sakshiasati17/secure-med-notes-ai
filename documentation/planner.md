@@ -1,5 +1,60 @@
 # Secure Medical Notes AI — 8-Week Project Timeline (Team of 2)
 
+## Final Tech Stack
+1. API/Backend: FastAPI, Celery + Redis, PostgreSQL, SQLAlchemy + Alembic, python-dotenv
+2. AI/LLM Layer: LangChain, OpenAI GPT-4o/mini, Embeddings, FAISS/pgvector
+3. UI/Dashboard: Streamlit, Plotly/Altair (optional)
+4. Infra/Deployment: Docker, Docker Compose, Nginx (optional), GitHub Actions, GCP/AWS (optional)
+5. Security: AES, JWT/OAuth2, Audit logging
+6. Notebooks: eval_llm_prompts.ipynb, risk_agent_prototyping.ipynb, nurse_demo_flow.ipynb
+
+## Project Structure
+secure-med-notes-ai/
+├─ README.md
+├─ requirements.txt
+├─ .gitignore
+├─ .env.example
+├─ docker-compose.yml
+│
+├─ infra/
+│  ├─ Dockerfile.api
+│  ├─ Dockerfile.worker
+│  ├─ Dockerfile.ui
+│  └─ nginx.conf
+│
+├─ api/
+│  ├─ main.py
+│  ├─ deps.py
+│  ├─ routes/
+│  ├─ services/
+│  ├─ agents/
+│  ├─ models/
+│  ├─ db/
+│  ├─ tasks/
+│  └─ tests/
+│
+├─ ui/
+│  ├─ app.py
+│  ├─ components/
+│  └─ assets/
+│
+├─ data/
+│  ├─ sample_doctor_notes/
+│  ├─ sample_nurse_notes/
+│  └─ policies/hipaa.md
+│
+├─ documentation/
+│  └─ planner.md
+│
+└─ notebooks/
+   ├─ eval_llm_prompts.ipynb
+   ├─ risk_agent_prototyping.ipynb
+   └─ nurse_demo_flow.ipynb
+
+---
+
+# 8-Week Project Timeline (Team of 2)
+
 This planner breaks down the project into weekly milestones, with clear, balanced work for both team members. Each person will work on both backend and frontend tasks, ensuring equal opportunities and collaboration.
 
 ---

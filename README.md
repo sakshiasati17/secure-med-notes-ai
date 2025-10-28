@@ -209,10 +209,51 @@ Response:
 
 ## Quick Start
 
-1) Copy `.env.example` to `.env` and fill values.
-2) Start infra: `docker compose up -d` (Postgres + Redis).
-3) (When ready) run API locally: `uvicorn api.main:app --reload`
-4) (When ready) run UI: `streamlit run ui/app.py`
+### Option 1: Automated Setup (Recommended)
+```bash
+# Run the setup script
+./start.sh
+```
+
+### Option 2: Manual Setup
+1) **Create environment file:**
+   ```bash
+   cp .env.example .env  # Edit with your values
+   ```
+
+2) **Start infrastructure:**
+   ```bash
+   docker compose up -d
+   ```
+
+3) **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4) **Seed sample data:**
+   ```bash
+   python api/seed_data.py
+   ```
+
+5) **Start the application:**
+   ```bash
+   # Terminal 1 - API Server
+   uvicorn api.main:app --reload
+   
+   # Terminal 2 - UI Server  
+   streamlit run ui/app.py
+   ```
+
+### Access Points
+- **API Server:** http://localhost:8000
+- **UI Dashboard:** http://localhost:8501
+- **API Documentation:** http://localhost:8000/docs
+
+### Test Credentials
+- **Doctor:** dr.smith@hospital.com / password123
+- **Nurse:** nurse.johnson@hospital.com / password123
+- **Admin:** admin@hospital.com / password123
 
 ## Install Checklist (no coding)
 - VS Code (+ extensions: Python, Pylance, Docker, GitHub PRs & Issues, REST/Thunder Client, Python Test Adapter)
