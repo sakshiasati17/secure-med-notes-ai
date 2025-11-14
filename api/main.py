@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
 from api.db.database import engine, Base
-from api.routes import auth, patients, notes, ai
+from api.routes import auth, patients, notes, ai, appointments
 
 # Create database tables
 @asynccontextmanager
@@ -33,6 +33,7 @@ app.include_router(auth.router)
 app.include_router(patients.router)
 app.include_router(notes.router)
 app.include_router(ai.router)
+app.include_router(appointments.router)
 
 @app.get("/")
 def healthcheck():

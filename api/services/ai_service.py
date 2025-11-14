@@ -104,15 +104,11 @@ Guidelines:
 - Focus on actionable insights
 """
             
-            user_prompt = f"""Analyze this {note_type} medical note and provide a comprehensive structured summary:
-
-MEDICAL NOTE:
-{note_content}
-
-{"PATIENT HISTORY CONTEXT:\n" + history_context if history_context else ""}
-
-Provide your analysis in the following JSON format:
-{{
+            history_section = ""
+            if history_context:
+                history_section = f"\nPATIENT HISTORY CONTEXT:\n{history_context}\n"
+            
+            summary_json_template = """{
     "summary": "Brief 2-3 sentence overview",
     "key_findings": "Most important clinical findings",
     "chief_complaint": "Primary reason for visit",
@@ -123,8 +119,15 @@ Provide your analysis in the following JSON format:
     "follow_up": "Follow-up recommendations",
     "risk_factors": "Any identified risk factors",
     "urgent_flags": "Any urgent concerns requiring immediate attention"
-}}
-"""
+}"""
+            
+            user_prompt = (
+                f"Analyze this {note_type} medical note and provide a comprehensive structured summary:\n\n"
+                f"MEDICAL NOTE:\n{note_content}\n"
+                f"{history_section}"
+                "Provide your analysis in the following JSON format:\n"
+                f"{summary_json_template}\n"
+            )
             
             # Call GPT-4
             messages = [
@@ -199,12 +202,7 @@ Base your assessment on:
 - Standard clinical guidelines
 """
             
-            user_prompt = f"""Perform a comprehensive risk assessment:
-
-{full_context}
-
-Provide your assessment in JSON format:
-{{
+            risk_json_template = """{
     "risk_level": "LOW|MEDIUM|HIGH|CRITICAL",
     "confidence_score": 0-100,
     "summary": "Overall risk assessment summary",
@@ -215,8 +213,14 @@ Provide your assessment in JSON format:
     "escalation_criteria": "When to escalate care",
     "requires_urgent_attention": true/false,
     "estimated_severity": "mild|moderate|severe|life-threatening"
-}}
-"""
+}"""
+            
+            user_prompt = (
+                "Perform a comprehensive risk assessment:\n\n"
+                f"{full_context}\n\n"
+                "Provide your assessment in JSON format:\n"
+                f"{risk_json_template}\n"
+            )
             
             messages = [
                 SystemMessage(content=system_prompt),
@@ -260,33 +264,33 @@ Provide your assessment in JSON format:
 Provide treatment recommendations based on current clinical guidelines and best practices.
 Always consider patient safety, contraindications, and individual patient factors."""
             
-            user_prompt = f"""Generate treatment recommendations for:
-
-DIAGNOSIS: {diagnosis}
-
-PATIENT CONTEXT:
-{patient_context}
-{contraindications_text}
-
-Provide recommendations in JSON format:
-{{
+            treatment_json_template = """{
     "primary_treatment": "First-line treatment approach",
     "medications": [
-        {{
+        {
             "name": "medication name",
             "dosage": "typical dosage",
             "frequency": "how often",
             "duration": "treatment duration",
             "rationale": "why this medication"
-        }}
+        }
     ],
     "non_pharmacological": ["lifestyle modifications", "therapies"],
     "monitoring_requirements": "What to monitor and how often",
     "patient_education": ["key points to educate patient"],
     "red_flags": ["warning signs to watch for"],
     "follow_up_timeline": "When to follow up"
-}}
-"""
+}"""
+            
+            user_prompt = (
+                "Generate treatment recommendations for:\n\n"
+                f"DIAGNOSIS: {diagnosis}\n\n"
+                "PATIENT CONTEXT:\n"
+                f"{patient_context}\n"
+                f"{contraindications_text}\n\n"
+                "Provide recommendations in JSON format:\n"
+                f"{treatment_json_template}\n"
+            )
             
             messages = [
                 SystemMessage(content=system_prompt),
@@ -317,20 +321,21 @@ Provide recommendations in JSON format:
             return {"entities": [], "error": "AI not available"}
         
         try:
-            prompt = f"""Extract all medical entities from the following text and categorize them:
-
-TEXT: {text}
-
-Return JSON format:
-{{
+            entity_json_template = """{
     "conditions": ["diagnosed conditions"],
     "symptoms": ["reported symptoms"],
     "medications": ["medications mentioned"],
     "procedures": ["procedures mentioned"],
     "vital_signs": ["vital signs with values"],
     "lab_results": ["lab results with values"]
-}}
-"""
+}"""
+            
+            prompt = (
+                "Extract all medical entities from the following text and categorize them:\n\n"
+                f"TEXT: {text}\n\n"
+                "Return JSON format:\n"
+                f"{entity_json_template}\n"
+            )
             
             response = self.llm.invoke([HumanMessage(content=prompt)])
             
@@ -426,4 +431,3 @@ if __name__ == "__main__":
         
         risk = service.assess_patient_risk(test_note)
         print("\nRisk Assessment:", json.dumps(risk, indent=2))
-
