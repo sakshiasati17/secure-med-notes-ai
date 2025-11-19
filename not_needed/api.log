@@ -1,0 +1,310 @@
+INFO:     Will watch for changes in these directories: ['/Users/sukritisehgal/secure-med-notes-ai']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [30362] using WatchFiles
+/Users/sukritisehgal/secure-med-notes-ai/.venv/lib/python3.13/site-packages/pydantic/_internal/_config.py:383: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [30371]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+✅ Enhanced AI Service initialized successfully!
+✅ Enhanced AI Service initialized successfully!
+INFO:     127.0.0.1:64633 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64684 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64686 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65255 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65255 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65309 - "OPTIONS /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65310 - "OPTIONS /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65309 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65310 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65318 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65319 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65319 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65327 - "POST /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65327 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65327 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65331 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65338 - "OPTIONS /appointments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65338 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:65338 - "OPTIONS /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65335 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65337 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65340 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65344 - "OPTIONS /appointments?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65344 - "GET /appointments?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:65344 - "OPTIONS /appointments/?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65346 - "GET /appointments/?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65352 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:65349 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65352 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65351 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65357 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65358 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65358 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65365 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:65362 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65365 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65364 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65364 - "GET /appointments?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:65364 - "GET /appointments/?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65372 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65372 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65372 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65374 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65380 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:65377 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65380 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65379 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65520 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65520 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65523 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65526 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65526 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65529 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65529 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65534 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:65529 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65534 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65533 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49152 - "GET /appointments?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:49152 - "GET /appointments/?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49155 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49155 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49157 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49179 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:49176 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49179 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49178 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49185 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:49182 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49185 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49184 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49298 - "OPTIONS /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49299 - "OPTIONS /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49298 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49301 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49337 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49338 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49383 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49384 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49416 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49417 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49468 - "OPTIONS /appointments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49468 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:49468 - "OPTIONS /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49466 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49470 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49467 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49480 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49480 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49480 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49482 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49488 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:49486 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49488 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49487 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49870 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49870 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49870 - "OPTIONS /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49874 - "OPTIONS /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49870 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49874 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50555 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50555 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50555 - "OPTIONS /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50557 - "OPTIONS /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50555 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50557 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50567 - "OPTIONS /appointments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50567 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:50567 - "OPTIONS /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50565 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50569 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50566 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50566 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50569 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50576 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:50574 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50576 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50575 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50575 - "OPTIONS /appointments?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50576 - "GET /appointments?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:50576 - "OPTIONS /appointments/?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50575 - "GET /appointments/?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50575 - "GET /appointments?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:50575 - "GET /appointments/?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50574 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:50575 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50574 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50576 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50590 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:50587 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50590 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50589 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50592 - "GET /appointments?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:50592 - "GET /appointments/?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50663 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50663 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50664 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50663 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51030 - "OPTIONS /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51031 - "OPTIONS /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51033 - "OPTIONS /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51035 - "OPTIONS /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51030 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51038 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51030 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51035 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51075 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51075 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51076 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51075 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51116 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51116 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51116 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51118 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51124 - "OPTIONS /appointments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51124 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:51124 - "OPTIONS /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51121 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51126 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51123 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51134 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51134 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51134 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51136 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51136 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51134 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51140 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51141 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51141 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51140 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51148 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:51140 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51148 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51141 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51141 - "OPTIONS /appointments?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51148 - "GET /appointments?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:51148 - "OPTIONS /appointments/?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51141 - "GET /appointments/?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51150 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51150 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51152 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51182 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51182 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51199 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51258 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51259 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51286 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51286 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51288 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51341 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51341 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51343 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51363 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:51360 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51363 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51362 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51370 - "GET /appointments?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:51370 - "GET /appointments/?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51379 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:51377 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51379 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51378 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51384 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51384 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51386 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51388 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51390 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51392 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:51390 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51392 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51388 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51388 - "GET /appointments?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:51388 - "GET /appointments/?start=2025-11-01T06%3A00%3A00.000Z&end=2025-12-01T06%3A59%3A59.000Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51395 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51395 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51397 - "GET /notes/ HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'old_ui/app_old.py', 'not_needed/old_ui/app_old.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [30371]
+/Users/sukritisehgal/secure-med-notes-ai/.venv/lib/python3.13/site-packages/pydantic/_internal/_config.py:383: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [47670]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+✅ Enhanced AI Service initialized successfully!
+✅ Enhanced AI Service initialized successfully!
+INFO:     127.0.0.1:51546 - "OPTIONS /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51548 - "OPTIONS /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51549 - "OPTIONS /appointments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51548 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:51548 - "OPTIONS /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51549 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51551 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51589 - "GET /appointments HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:51586 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51589 - "GET /appointments/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51588 - "GET /notes/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51593 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51594 - "GET /notes/ HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'old_ui/pages/nurse/patient_care.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [47670]
+/Users/sukritisehgal/secure-med-notes-ai/.venv/lib/python3.13/site-packages/pydantic/_internal/_config.py:383: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [49401]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'old_ui/pages/nurse/patient_care.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [49401]
+/Users/sukritisehgal/secure-med-notes-ai/.venv/lib/python3.13/site-packages/pydantic/_internal/_config.py:383: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [49530]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+✅ Enhanced AI Service initialized successfully!
+✅ Enhanced AI Service initialized successfully!
+INFO:     127.0.0.1:51659 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51659 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51659 - "GET /patients/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51663 - "GET /notes/ HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'old_ui/pages/nurse/patient_care.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [49530]
+/Users/sukritisehgal/secure-med-notes-ai/.venv/lib/python3.13/site-packages/pydantic/_internal/_config.py:383: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [49767]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ui/pages/doctor/patients.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [49767]
+/Users/sukritisehgal/secure-med-notes-ai/.venv/lib/python3.13/site-packages/pydantic/_internal/_config.py:383: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [49829]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [49829]
+INFO:     Stopping reloader process [30362]

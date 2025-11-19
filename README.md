@@ -4,8 +4,9 @@
 
 A secure, full-stack medical documentation platform that empowers healthcare teams with AI-powered note summarization, risk assessment, and intelligent clinical insights. Built with modern technologies and HIPAA compliance in mind.
 
-[![Tech Stack](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![Tech Stack](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)](https://openai.com/)
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
@@ -96,7 +97,9 @@ A secure, full-stack medical documentation platform that empowers healthcare tea
 
 ## 🏗️ Architecture
 
-### System Architecture Diagram
+**For detailed architecture documentation, see [ARCHITECTURE.md](ARCHITECTURE.md)**
+
+### High-Level System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -114,16 +117,18 @@ A secure, full-stack medical documentation platform that empowers healthcare tea
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                      PRESENTATION LAYER                                  │
 │  ┌──────────────────────────────────────────────────────────────────┐  │
-│  │                    STREAMLIT UI (Port 8501)                       │  │
+│  │                REACT 18 + TypeScript (Port 3000)                  │  │
 │  │  ┌────────────────┐  ┌─────────────────┐  ┌──────────────────┐  │  │
 │  │  │ Doctor         │  │ Nurse           │  │ Shared           │  │  │
-│  │  │ Dashboard      │  │ Workspace       │  │ Components       │  │  │
+│  │  │ Dashboard      │  │ Dashboard       │  │ Components       │  │  │
 │  │  ├────────────────┤  ├─────────────────┤  ├──────────────────┤  │  │
 │  │  │ • AI Analytics │  │ • Vitals Entry  │  │ • Patient Search │  │  │
-│  │  │ • Risk Reports │  │ • Med Admin     │  │ • Auth Forms     │  │  │
-│  │  │ • Notes Mgmt   │  │ • I/O Tracking  │  │ • Data Viz       │  │  │
-│  │  │ • Calendar     │  │ • Task List     │  │ • Notifications  │  │  │
+│  │  │ • Risk Reports │  │ • Med Admin     │  │ • Auth (JWT)     │  │  │
+│  │  │ • Notes Studio │  │ • Timeline      │  │ • Data Viz       │  │  │
+│  │  │ • Calendar     │  │ • Task List     │  │ • Animations     │  │  │
 │  │  └────────────────┘  └─────────────────┘  └──────────────────┘  │  │
+│  │                                                                    │  │
+│  │  Tech: Framer Motion • Tailwind • Radix UI • Lucide Icons       │  │
 │  └──────────────────────────────────────────────────────────────────┘  │
 └────────────────────────┬────────────────────────────────────────────────┘
                          │ REST API (JSON)
@@ -262,10 +267,15 @@ A secure, full-stack medical documentation platform that empowers healthcare tea
 
 ## 🛠️ Tech Stack
 
-### Frontend
-- **Streamlit** - Interactive web UI framework
-- **Plotly** - Data visualization and charts
-- **Pandas** - Data manipulation
+### Frontend (Modern React SPA)
+- **React 18.3** - UI framework with hooks
+- **TypeScript** - Type-safe development
+- **Vite 6.3** - Lightning-fast build tool
+- **Framer Motion** - Smooth animations and transitions
+- **Tailwind CSS** - Utility-first styling
+- **Radix UI** - 48 accessible UI components
+- **Lucide React** - Beautiful icon library
+- **Recharts** - Data visualization
 
 ### Backend
 - **FastAPI** - Modern, fast API framework
@@ -305,78 +315,100 @@ A secure, full-stack medical documentation platform that empowers healthcare tea
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.11+
-- Docker Desktop
-- Git
-- OpenAI API key
+- **Node.js 18+** and npm
+- **Python 3.11+**
+- **Docker Desktop**
+- **Git**
+- **OpenAI API key**
 
-### Option 1: Automated Setup (Recommended)
+### One-Command Setup (Recommended)
 
 ```bash
 # Clone the repository
 git clone https://github.com/sakshiasati17/secure-med-notes-ai.git
 cd secure-med-notes-ai
 
-# Run automated setup script
-chmod +x start.sh
-./start.sh
+# Run the automated React startup script
+chmod +x start_react.sh
+./start_react.sh
 
 # The script will:
 # ✅ Start PostgreSQL and Redis (Docker)
-# ✅ Install Python dependencies
-# ✅ Create database tables
-# ✅ Seed sample data
-# ✅ Start API server (port 8000)
-# ✅ Start UI server (port 8501)
+# ✅ Check FastAPI backend status
+# ✅ Install frontend dependencies
+# ✅ Start React dev server (port 3000)
 ```
 
-### Option 2: Manual Setup
+### Manual Setup
 
+#### 1. Clone Repository
 ```bash
-# 1. Clone repository
 git clone https://github.com/sakshiasati17/secure-med-notes-ai.git
 cd secure-med-notes-ai
+```
 
-# 2. Create .env file
+#### 2. Configure Environment
+```bash
+# Create .env file in project root
 cat > .env << EOF
-DATABASE_URL=postgresql://meduser:medpass123@localhost:5432/secure_med_notes
+DATABASE_URL=postgresql://meduser:medpass123@localhost:5434/secure_med_notes
 REDIS_URL=redis://localhost:6379/0
 SECRET_KEY=your-secret-key-here-change-in-production
 OPENAI_API_KEY=your-openai-api-key-here
 EOF
+```
 
-# 3. Start infrastructure
+#### 3. Start Infrastructure (Docker)
+```bash
 docker compose up -d
+```
 
-# 4. Install dependencies
+#### 4. Setup Backend
+```bash
+# Create virtual environment
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install Python dependencies
 pip install -r requirements.txt
 
-# 5. Create database tables
-python -c "from api.db.database import engine, Base; from api.models import user, patient, note, audit; Base.metadata.create_all(bind=engine)"
+# Create database tables
+python -c "from api.db.database import engine, Base; from api.models import user, patient, note, audit, appointment; Base.metadata.create_all(bind=engine)"
 
-# 6. Seed sample data
+# Seed sample data
 python api/seed_more_data.py
 
-# 7. Start API server (Terminal 1)
-uvicorn api.main:app --reload --port 8000
+# Start FastAPI server
+uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
+```
 
-# 8. Start UI server (Terminal 2)
-streamlit run ui/app.py --server.port 8501
+#### 5. Setup Frontend (New Terminal)
+```bash
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start React development server
+npm run dev
 ```
 
 ### Access the Application
 
-- **🌐 Web UI:** http://localhost:8501
-- **🔧 API:** http://localhost:8000
+- **🌐 React UI:** http://localhost:3000
+- **🔧 API Server:** http://localhost:8000
 - **📚 API Docs:** http://localhost:8000/docs
+- **🗄️ PostgreSQL:** localhost:5434
+- **🔴 Redis:** localhost:6379
 
-### Test Credentials
+### Demo Credentials
 
 | Role | Email | Password |
 |------|-------|----------|
-| 👨‍⚕️ Doctor | doctor@hospital.com | doctor123 |
-| 👩‍⚕️ Nurse | nurse@hospital.com | nurse123 |
-| 👤 Admin | admin@hospital.com | admin123 |
+| 👨‍⚕️ Doctor | dr.williams@hospital.com | password123 |
+| 👩‍⚕️ Nurse | nurse.davis@hospital.com | password123 |
+
+*Note: These are the seeded demo accounts. See [LOGIN_CREDENTIALS.txt](LOGIN_CREDENTIALS.txt) for all demo users.*
 
 ---
 
@@ -384,71 +416,116 @@ streamlit run ui/app.py --server.port 8501
 
 ```
 secure-med-notes-ai/
-├── api/                          # Backend API
-│   ├── agents/                   # AI agents (summarization, risk)
-│   ├── db/                       # Database configuration
-│   ├── models/                   # SQLAlchemy models
-│   ├── routes/                   # API endpoints
-│   ├── schemas/                  # Pydantic schemas
-│   ├── services/                 # Business logic services
-│   ├── tasks/                    # Celery background tasks
-│   ├── deps.py                   # Dependencies (auth, db)
-│   ├── main.py                   # FastAPI application
-│   └── seed_more_data.py         # Sample data generation (60+ diverse notes)
+├── frontend/                     # React Frontend (Port 3000)
+│   ├── src/
+│   │   ├── components/           # React components
+│   │   │   ├── DoctorDashboard.tsx      # Doctor workspace
+│   │   │   ├── NurseDashboard.tsx       # Nurse workspace
+│   │   │   ├── PatientsTab.tsx          # Patient management
+│   │   │   ├── ClinicalNotesTab.tsx     # Note creation
+│   │   │   ├── CalendarTab.tsx          # Scheduling
+│   │   │   ├── Login.tsx                # Authentication
+│   │   │   └── ui/                      # 48 Radix UI components
+│   │   ├── services/
+│   │   │   └── api.ts            # API client with JWT
+│   │   ├── App.tsx               # Main app routing
+│   │   ├── main.tsx              # Entry point
+│   │   └── index.css             # Tailwind styles
+│   ├── package.json              # Node dependencies
+│   ├── vite.config.ts            # Vite configuration
+│   ├── README.md                 # Frontend documentation
+│   └── FEATURES.md               # Feature inventory
 │
-├── ui/                           # Frontend UI
-│   ├── ai_dashboard.py           # AI analytics dashboard
-│   ├── calendar_system.py        # Appointment calendar
-│   ├── language_support.py       # Multi-language support
-│   ├── note_templates.py         # Pre-built note templates
-│   ├── notifications.py          # Notification system
-│   ├── nurse_workspace.py        # Nurse-specific features
-│   ├── patient_dashboard.py      # Patient management
-│   └── app.py                    # Main Streamlit application
+├── api/                          # FastAPI Backend (Port 8000)
+│   ├── agents/                   # AI agents
+│   │   ├── summarization_agent.py       # Note summarization
+│   │   └── risk_agent.py                # Risk assessment
+│   ├── db/
+│   │   └── database.py           # Database connection
+│   ├── models/                   # SQLAlchemy models
+│   │   ├── user.py               # User model
+│   │   ├── patient.py            # Patient model
+│   │   ├── note.py               # Note model
+│   │   ├── appointment.py        # Appointment model
+│   │   └── audit.py              # Audit log model
+│   ├── routes/                   # API endpoints
+│   │   ├── auth.py               # /auth/login, /auth/signup
+│   │   ├── patients.py           # /patients/*
+│   │   ├── notes.py              # /notes/*
+│   │   ├── ai.py                 # /ai/*
+│   │   └── appointments.py       # /appointments/*
+│   ├── schemas/                  # Pydantic schemas
+│   │   ├── user.py               # User validation
+│   │   ├── patient.py            # Patient validation
+│   │   └── note.py               # Note validation
+│   ├── services/                 # Business logic
+│   │   ├── ai_service.py         # OpenAI integration
+│   │   └── auth_service.py       # JWT & passwords
+│   ├── deps.py                   # FastAPI dependencies
+│   ├── main.py                   # FastAPI app
+│   └── seed_more_data.py         # Sample data (60+ notes)
 │
 ├── docs/                         # Documentation
-│   ├── archive/                  # Historical status docs
-│   ├── features/                 # Feature documentation
+│   ├── features/                 # Feature docs
 │   └── guides/                   # Technical guides
 │
-├── infra/                        # Infrastructure files
+├── infra/                        # Infrastructure
 │   ├── Dockerfile.api            # API container
-│   ├── Dockerfile.ui             # UI container
-│   ├── Dockerfile.worker         # Celery worker container
-│   └── nginx.conf                # Nginx configuration
+│   └── nginx.conf                # Nginx config
 │
 ├── data/                         # Data files
-│   └── policies/                 # Compliance policies
+│   └── policies/
+│       └── hipaa.md              # HIPAA compliance policy
 │
-├── docker-compose.yml            # Docker services definition
+├── docker-compose.yml            # PostgreSQL + Redis services
 ├── requirements.txt              # Python dependencies
-├── start.sh                      # Automated setup script
-└── README.md                     # This file
+├── .env                          # Environment variables
+├── start_react.sh                # Quick start script
+├── README.md                     # This file
+├── ARCHITECTURE.md               # Detailed architecture docs
+└── UNNECESSARY_FILES.md          # Cleanup guide
 ```
 
 ---
 
 ## 🖼️ Screenshots
 
-### Doctor Dashboard
-![Doctor Dashboard](https://via.placeholder.com/800x400?text=Doctor+Dashboard+-+AI+Analytics+%26+Risk+Assessment)
+### Modern React Interface
 
-### Nurse Workspace
-![Nurse Workspace](https://via.placeholder.com/800x400?text=Nurse+Workspace+-+Vitals+%26+Medications)
+#### Landing Page
+- Glassmorphic design with medical patterns
+- Smooth animations and gradient effects
+- Dark mode support throughout
 
-### Patient Search
-![Patient Search](https://via.placeholder.com/800x400?text=Patient+Search+-+Smart+Results)
+#### Doctor Dashboard
+- Purple-to-indigo gradient theme
+- AI-powered analytics and risk assessment
+- Clinical notes studio with templates
+- Patient intelligence workspace
+- Appointment calendar
 
-### AI Summary
-![AI Summary](https://via.placeholder.com/800x400?text=AI-Generated+Note+Summary)
+#### Nurse Dashboard
+- Pink-to-purple gradient theme (updated to purple-to-indigo)
+- Emoji-enhanced UX for quick recognition
+- Vitals monitoring with real-time alerts
+- Medication administration tracking
+- Patient timeline and task management
+
+*For detailed UI features, see [frontend/FEATURES.md](frontend/FEATURES.md)*
 
 ---
 
 ## 📚 API Documentation
 
-### Authentication
+**For complete API details, visit:** http://localhost:8000/docs (when running)
 
-#### POST /auth/signup
+**For detailed architecture, see:** [ARCHITECTURE.md](ARCHITECTURE.md)
+
+### Key Endpoints
+
+#### Authentication
+
+##### POST /auth/signup
 Register a new user.
 
 ```json
@@ -583,42 +660,46 @@ Generate detailed risk report for patient.
 
 ---
 
-## 🎓 Features in Detail
+## 🎓 Key Features in Detail
 
-### 1. AI-Powered Summarization
+### 1. Modern React UI
+- **Glassmorphic Design**: Beautiful blur effects and gradients
+- **Dark Mode**: Toggle between light and dark themes
+- **Smooth Animations**: Framer Motion powered micro-interactions
+- **Responsive**: Works on desktop, tablet, and mobile
+- **Fast**: Vite build tool for instant hot reload
+
+### 2. AI-Powered Summarization
 - Automatically summarizes lengthy clinical notes
-- Extracts key medical information
+- Extracts key medical information using GPT-4
 - Maintains clinical accuracy
-- Processes in background without blocking UI
+- Background processing with async API calls
 
-### 2. Risk Assessment
+### 3. Risk Assessment
 - Analyzes patient history and current status
-- Identifies high-risk patients
+- Identifies high-risk patients automatically
 - Generates evidence-based recommendations
-- Provides risk trends over time
+- Visual risk indicators in dashboards
 
-### 3. Semantic Search
-- Search by meaning, not just keywords
-- Finds similar medical cases
-- Uses vector embeddings (FAISS)
-- Context-aware results
+### 4. Role-Based Access Control
+- **Doctor Portal**: Full analytics, AI features, clinical notes
+- **Nurse Portal**: Vitals, medications, patient care tasks
+- **JWT Authentication**: Secure token-based auth
+- **RBAC**: Backend enforces role permissions
 
-### 4. Role-Based Access
-- Doctor: Full access to analytics and AI features
-- Nurse: Patient care focus (vitals, meds, tasks)
-- Admin: System management (planned)
-
-### 5. Real-Time Alerts
-- Abnormal vital signs detection
-- Medication due notifications
-- High-risk patient flags
-- Emergency communication between roles
+### 5. Real-Time Patient Data
+- Patient search with instant filtering
+- Live vital signs monitoring (ready for WebSocket)
+- Medication tracking with due alerts
+- Timeline view of patient activities
 
 ---
 
 ## 🔧 Development
 
-### Running Tests
+### Backend Development
+
+#### Running Tests
 ```bash
 # Install test dependencies
 pip install pytest pytest-cov
@@ -630,19 +711,19 @@ pytest
 pytest --cov=api tests/
 ```
 
-### Code Quality
+#### Code Quality
 ```bash
 # Format code
-black api/ ui/
+black api/
 
 # Lint code
-flake8 api/ ui/
+flake8 api/
 
 # Type checking
 mypy api/
 ```
 
-### Database Migrations
+#### Database Migrations
 ```bash
 # Create migration
 alembic revision --autogenerate -m "Add new field"
@@ -652,6 +733,29 @@ alembic upgrade head
 
 # Rollback
 alembic downgrade -1
+```
+
+### Frontend Development
+
+#### Development Server
+```bash
+cd frontend
+npm run dev  # Starts on port 3000
+```
+
+#### Production Build
+```bash
+npm run build      # Creates optimized build
+npm run preview    # Preview production build
+```
+
+#### Code Quality
+```bash
+# Type checking
+tsc --noEmit
+
+# Linting (if configured)
+eslint src/
 ```
 
 ---
@@ -676,24 +780,39 @@ This project is for educational purposes. See `LICENSE` file for details.
 
 ## 👥 Authors
 
+**Data Center Scale Computing Course Project**
+
+Team Members:
 - **Sakshi Asati** - [GitHub](https://github.com/sakshiasati17)
+- **Sukriti Sehgal**
 
 ---
 
 ## 🙏 Acknowledgments
 
-- OpenAI for GPT-4 API
-- FastAPI community
-- Streamlit team
+- OpenAI for GPT-4 API access
+- FastAPI community for excellent documentation
+- React team for the modern UI framework
+- Radix UI for accessible components
+- Framer Motion for smooth animations
 - Healthcare professionals for domain insights
 
 ---
 
-## 📞 Support
+## 📞 Support & Documentation
 
-For questions or issues:
-- 📧 Email: sakshi.asati@example.com
-- 🐛 Issues: [GitHub Issues](https://github.com/sakshiasati17/secure-med-notes-ai/issues)
+### Documentation
+- 📖 [ARCHITECTURE.md](ARCHITECTURE.md) - Complete system architecture
+- 📝 [frontend/README.md](frontend/README.md) - Frontend documentation
+- 🎯 [frontend/FEATURES.md](frontend/FEATURES.md) - Feature inventory
+- 🗑️ [UNNECESSARY_FILES.md](UNNECESSARY_FILES.md) - Cleanup guide
+
+### API Documentation
+- 🔧 Interactive API Docs: http://localhost:8000/docs (when running)
+- 📚 ReDoc: http://localhost:8000/redoc
+
+### Issues & Support
+- 🐛 Report bugs: [GitHub Issues](https://github.com/sakshiasati17/secure-med-notes-ai/issues)
 - 💬 Discussions: [GitHub Discussions](https://github.com/sakshiasati17/secure-med-notes-ai/discussions)
 
 ---
@@ -701,30 +820,38 @@ For questions or issues:
 ## 🎯 Roadmap
 
 ### Completed ✅
-- [x] User authentication (JWT)
-- [x] Role-based access control
-- [x] Patient management
-- [x] Clinical notes CRUD
-- [x] AI summarization
-- [x] Risk assessment
-- [x] Doctor dashboard with analytics
-- [x] Nurse workspace with vitals/meds
-- [x] Patient search (ID and name)
-- [x] Emergency communication
-- [x] Calendar system
-- [x] Data visualizations
+- [x] **Modern React UI** with TypeScript and Vite
+- [x] **Glassmorphic design** with dark mode
+- [x] **Framer Motion animations** and micro-interactions
+- [x] **JWT authentication** with role-based routing
+- [x] **Doctor dashboard** with AI analytics
+- [x] **Nurse dashboard** with vitals and medication tracking
+- [x] **Patient management** with search and filtering
+- [x] **Clinical notes** with templates
+- [x] **AI summarization** (GPT-4 integration)
+- [x] **Risk assessment** agent
+- [x] **Appointment calendar**
+- [x] **RESTful API** with FastAPI
+- [x] **PostgreSQL** database with SQLAlchemy
+- [x] **Docker** containerization
+
+### Ready for Enhancement 🎨
+- [ ] Full end-to-end testing of all API integrations
+- [ ] Production deployment configuration
+- [ ] Performance optimization and caching
+- [ ] Comprehensive error handling improvements
 
 ### Planned 📋
-- [ ] Email notifications (SendGrid)
-- [ ] SMS alerts (Twilio)
-- [ ] PDF report generation
-- [ ] Multi-language support
-- [ ] Mobile responsive UI
-- [ ] Voice-to-text notes
-- [ ] Lab results integration
-- [ ] Prescription management
-- [ ] Telemedicine integration
-- [ ] Advanced analytics dashboards
+- [ ] **WebSocket** for real-time updates
+- [ ] **Email notifications** (SendGrid)
+- [ ] **SMS alerts** (Twilio)
+- [ ] **PDF report** generation
+- [ ] **Voice-to-text** clinical notes
+- [ ] **Lab results** integration
+- [ ] **Prescription** management
+- [ ] **Advanced analytics** dashboards
+- [ ] **Mobile app** (React Native/Capacitor)
+- [ ] **Telemedicine** integration
 
 ---
 
@@ -749,6 +876,17 @@ For questions or issues:
    - Trend analysis
    - Chronic disease management
    - Care coordination
+
+---
+
+## 🚦 Current Status
+
+**Production Ready**: ✅ Core features functional
+**Frontend**: ✅ Modern React UI with TypeScript
+**Backend**: ✅ FastAPI with AI integration
+**Database**: ✅ PostgreSQL with seeded data
+**Authentication**: ✅ JWT-based auth with RBAC
+**AI Features**: ✅ Summarization & risk assessment
 
 ---
 

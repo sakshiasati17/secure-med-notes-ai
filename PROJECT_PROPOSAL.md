@@ -37,10 +37,14 @@ Medical professionals spend an average of 16 minutes per patient on documentatio
 ### Software Stack
 
 #### Frontend Layer
-- **Streamlit 1.28+**: Interactive web UI framework
+- **React 18.3+**: Modern UI framework with TypeScript
   - Role-based dashboards for doctors and nurses
-  - Real-time data visualization with Plotly
-  - Responsive design for desktop and tablet use
+  - Real-time data visualization with Recharts
+  - Fully responsive design for desktop, tablet, and mobile
+- **Vite 6.3**: Lightning-fast build tool and dev server
+- **Tailwind CSS**: Utility-first styling framework
+- **Radix UI**: 48+ accessible UI components
+- **Framer Motion**: Smooth animations and transitions
 
 #### Backend Services
 - **FastAPI 0.104+**: High-performance REST API framework
@@ -161,21 +165,26 @@ Medical professionals spend an average of 16 minutes per patient on documentatio
 │                           PRESENTATION LAYER                             │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
-│  ┌──────────────────┐              ┌──────────────────┐                │
-│  │  Doctor Portal   │              │  Nurse Portal    │                │
-│  │  (Streamlit UI)  │              │  (Streamlit UI)  │                │
-│  │                  │              │                  │                │
-│  │ • Patient Mgmt   │              │ • Vitals Entry   │                │
-│  │ • Clinical Notes │              │ • Medication MAR │                │
-│  │ • AI Dashboard   │              │ • I/O Tracking   │                │
-│  │ • Risk Reports   │              │ • Task Checklist │                │
-│  │ • Analytics      │              │ • Quick Actions  │                │
-│  └────────┬─────────┘              └────────┬─────────┘                │
-│           │                                 │                           │
-│           └─────────────┬───────────────────┘                           │
+│  ┌──────────────────────────────────────────────────────────────────┐  │
+│  │                REACT 18 + TypeScript (Port 3000)                  │  │
+│  │                                                                   │  │
+│  │  ┌──────────────────┐              ┌──────────────────┐         │  │
+│  │  │  Doctor Portal   │              │  Nurse Portal    │         │  │
+│  │  │                  │              │                  │         │  │
+│  │  │ • Patient Mgmt   │              │ • Vitals Entry   │         │  │
+│  │  │ • Clinical Notes │              │ • Medication MAR │         │  │
+│  │  │ • AI Dashboard   │              │ • Timeline       │         │  │
+│  │  │ • Risk Reports   │              │ • Task Checklist │         │  │
+│  │  │ • Calendar       │              │ • Quick Actions  │         │  │
+│  │  └────────┬─────────┘              └────────┬─────────┘         │  │
+│  │           │                                 │                    │  │
+│  │  Tech: Framer Motion • Tailwind • Radix UI • Lucide Icons      │  │
+│  └──────────────────────────────────────────────────────────────────┘  │
+│                        │                                                │
 └───────────────────────┬─┴───────────────────────────────────────────────┘
                         │
-                   HTTPS/REST API
+                   HTTPS/REST API (JSON)
+                   Authorization: Bearer {JWT}
                         │
 ┌───────────────────────▼─────────────────────────────────────────────────┐
 │                        APPLICATION LAYER                                 │
@@ -286,11 +295,12 @@ Medical professionals spend an average of 16 minutes per patient on documentatio
 ### Component Interaction Flow:
 
 **User Authentication Flow:**
-1. User enters credentials in Streamlit UI
+1. User enters credentials in React UI
 2. UI sends POST to `/auth/login` endpoint
 3. FastAPI validates credentials against PostgreSQL
 4. JWT token generated and returned
-5. Token stored in session state for subsequent requests
+5. Token stored in localStorage for subsequent requests
+6. API client adds Bearer token to all requests
 
 **Note Creation & AI Processing Flow:**
 1. Doctor/Nurse creates note in UI
@@ -321,17 +331,22 @@ Medical professionals spend an average of 16 minutes per patient on documentatio
 
 ### 5.1 Frontend-Backend Communication
 
-**Streamlit → FastAPI:**
+**React → FastAPI:**
 - **Protocol**: HTTP/HTTPS REST API
 - **Authentication**: Bearer token (JWT) in Authorization header
 - **Data Format**: JSON request/response bodies
 - **Error Handling**: Structured error messages with HTTP status codes
+- **State Management**: React Hooks for local state
+- **API Client**: Centralized service layer in `services/api.ts`
 
 **Example API Call:**
-```
-Request: POST /notes/
-Headers: {Authorization: "Bearer <jwt_token>"}
-Body: {patient_id: 123, type: "doctor_note", content: "..."}
+```typescript
+// TypeScript API call in React
+const response = await api.createNote({
+  patient_id: 123,
+  type: "doctor_note",
+  content: "..."
+});
 
 Response: {id: 456, patient_id: 123, summary: null, status: "pending"}
 ```
@@ -582,15 +597,15 @@ We are containerized with Docker and ready for deployment on any cloud platform:
 **Yes, absolutely.** We have designed this project with a two-person team in mind:
 
 #### Division of Labor:
-- **Sakshi Asati**: Backend development (FastAPI, database models, API routes), AI service integration, Celery tasks
-- **Sukriti Sehgal**: Frontend development (Streamlit UI, dashboards, data visualization), system integration, testing
+- **Sakshi Asati**: Backend development (FastAPI, database models, API routes), AI service integration, async tasks
+- **Sukriti Sehgal**: Frontend development (React + TypeScript UI, dashboards, animations), system integration, testing
 
 #### Why It's Realistic:
-1. **Leveraging Frameworks**: We use high-productivity frameworks (FastAPI, Streamlit) that minimize boilerplate code
+1. **Leveraging Frameworks**: We use high-productivity frameworks (FastAPI for backend, React + Vite for frontend) that minimize boilerplate code
 2. **Managed Services**: PostgreSQL, Redis, and OpenAI are fully managed, eliminating infrastructure overhead
-3. **Incremental Development**: We built iteratively—authentication → notes → AI → dashboards
-4. **Existing Libraries**: LangChain, Plotly, SQLAlchemy provide pre-built functionality
-5. **Time Estimate**: 8 weeks × 2 people × 20 hours/week = 320 total hours, aligning with our planning document
+3. **Incremental Development**: We built iteratively—authentication → notes → AI → dashboards → React migration
+4. **Existing Libraries**: LangChain, Recharts, SQLAlchemy, Radix UI provide pre-built functionality
+5. **Time Estimate**: 10 weeks × 2 people × 20 hours/week = 400 total hours, including React UI development
 
 ### Complexity Calibration:
 
